@@ -13,6 +13,7 @@ class Movie {
     required this.poster_path,
   });
 
+  // Mapping data menjadi bentuk json
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
         original_title: json['original_title'],
@@ -22,13 +23,14 @@ class Movie {
   }
 }
 
+// Mengambil data berupa json dari REST API dengan async await
 class MovieService {
   Future<List<Movie>> getMovies() async {
     try {
       final response = await http.get(
-        Uri.parse("https://api.themoviedb.org/3/discover/movie?api_key=b0453bca0ad3ebdc787978a709d7d8ec&sort_by=popularity.desc&page=1"),
+        Uri.parse("https://api.themoviedb.org/3/discover/movie?api_key=b0453bca0ad3ebdc787978a709d7d8ec&sort_by=popularity.desc&page=1"), //URL REST API yang digunakan
       );
-
+      // Response status untuk REST API yang digunakan
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         final List<Movie> movieList = [];

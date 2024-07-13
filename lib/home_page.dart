@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) {
                     Movie movie = snapshot.data?[index];
                     return Column(
-                      children: [
+                      children: [ //Menampilkan data yang telah difetch dari REST API
                         Text(movie.original_title),
                         Image.network('https://image.tmdb.org/t/p/w500${movie.poster_path}'),
                         Text(movie.overview),
